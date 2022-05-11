@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+
+<body class="text-center sign-in-body well">
+
+<main class="form-signin">
+    <well class="form-signin">
+        <form th:action="@{/auth/register}"
+              th:object="${registerForm}" method="POST">
+            <img class="mb-4" th:src="@{/img/bootstrap-logo.svg}" alt="" width="72" height="57">
+            <h1 th:utext="${title}">..!..</h1>
+            <p class="lead" th:utext="${message}">...!...</p>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="username"
+                       th:field="*{username}">
+                <label for="floatingInput">Логин</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="qwerty"
+                       th:field="*{password}">
+                <label for="floatingPassword">Пароль</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPasswordRep" placeholder="qwerty"
+                       th:field="*{passwordConfirm}">
+                <label for="floatingPasswordRep">Повторите пароль</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="registerCode" placeholder="qwe123"
+                       th:field="*{code}">
+                <label for="registerCode">Код регистрации*</label>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Зарегистрироваться</button>
+            <p class="mt-5 text-muted">*Если Вы не знаете код регистрации, оставьте
+            это поле пустым</p>
+            <p class="mt-5 mb-3 text-muted">© 2022</p>
+        </form>
+        <div th:if="${errorMessage}" th:utext="${errorMessage}" class="alert alert-danger" role="alert">
+            ...!...
+        </div>
+    </well>
+</main>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

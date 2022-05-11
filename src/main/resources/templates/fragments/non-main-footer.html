@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<footer th:fragment="footer"  class="bg-dark text-center text-white mt-auto">
+
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: CTA -->
+            <section class="">
+                <p class="d-flex justify-content-center align-items-center">
+                    <span class="me-3">Это демонстрационный сайт </span>
+                    <button type="button" class="btn btn-outline-light btn-rounded">
+                        Регистрация
+                    </button>
+                </p>
+            </section>
+            <!-- Section: CTA -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright:
+            <a class="text-white" href="https://ege.buran.rest/docs/project/web/view">Буран</a>
+        </div>
+        <!-- Copyright -->
+
+        <div th:replace="fragments/footer :: footer"></div>
+</footer>
+</html>

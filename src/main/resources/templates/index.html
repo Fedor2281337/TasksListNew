@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+
+<body class="d-flex h-100 text-center text-white bg-dark well index-page">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div>
+            <h3 class="float-md-start mb-0">Демо</h3>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                <a class="nav-link" th:href="@{/taskList}">Список задач</a>
+                <a class="nav-link" href="/contact">Контакты</a>
+                <a sec:authorize="isAnonymous()" class="nav-link" href="/auth/login">Вход</a>
+                <a sec:authorize="isAnonymous()" class="nav-link" href="/auth/register">Регистрация</a>
+                <a sec:authorize="isAuthenticated()" class="nav-link" href="/logout">Выход</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="px-3">
+        <h1 th:utext="${title}">..!..</h1>
+        <p class="lead" th:utext="${message}">...!...</p>
+        <p class="lead">
+            <a th:href="@{/taskList}" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Список задач</a>
+        </p>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+        <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Демо</a>, by <a
+                href="https://ege.buran.rest/docs/project/web/view" class="text-white">@Буран</a>.</p>
+
+        <div th:replace="fragments/footer :: footer"></div>
+    </footer>
+</div>
+
+
+</body>
+</html>

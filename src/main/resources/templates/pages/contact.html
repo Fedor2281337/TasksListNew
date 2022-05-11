@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body class="well d-flex flex-column min-vh-100">
+
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-white">Главная</a></li>
+                <li><a href="/taskList" class="nav-link px-2 text-white">Список задач</a></li>
+                <li><a href="/contact" class="nav-link px-2 text-secondary">Контакты</a></li>
+            </ul>
+            <a sec:authorize="isAnonymous()" class="nav-link" href="/auth/login">
+                <button type="button" class="btn btn-outline-light me-2">Вход</button>
+            </a>
+            <a sec:authorize="isAnonymous()" class="nav-link" href="/auth/register">
+                <button type="button" class="btn btn-warning">Регистрация</button>
+            </a>
+            <a sec:authorize="isAuthenticated()" class="nav-link px-2 text-white" href="/taskList"
+               th:text="${#request.userPrincipal.getName()}">
+            </a>
+            <a sec:authorize="isAuthenticated()" class="nav-link" href="/logout">
+                <button type="button" class="btn btn-outline-light me-2">Выход</button>
+            </a>
+
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 th:utext="${title}">..!..</h1>
+                <p class="lead text-muted" th:utext="${message}">..!..</p>
+            </div>
+        </div>
+    </section>
+    <div th:if="${errorMessage}" th:utext="${errorMessage}" class="alert alert-danger" role="alert">
+        ...!...
+    </div>
+</main>
+
+<footer th:replace="fragments/non-main-footer :: footer"></footer>
+
+</body>
+</html>
